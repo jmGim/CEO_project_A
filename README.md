@@ -3,6 +3,10 @@
 IoT 실습 - 매장 관리 시스템
    
 ---
+### HW
+   
+   
+---
 ## 로그 기록
    
 #### (2022-06-13)
@@ -25,3 +29,11 @@ https://github.com/khoih-prog/ESP8266_ISR_Servo#example-esp8266_multiplerandomse
 * 보드 2개 이용하여 침입자 감지 시그널에 의해 부저가 동작하도록 작성   
 **보드 1** : UltraSonic, ServoMotor, Switch   
 **보드 2** : Buzzer   
+   
+   
+#### (2022-06-18)
+* HW 프레임 제작 완료   
+* NodeRed 제작 완료   
+* JSON 데이터로 주고 받는 동작 완성   
+   
+   
