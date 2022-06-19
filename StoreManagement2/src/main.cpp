@@ -8,7 +8,7 @@
 #define MIN_MICROS      800  //544
 #define MAX_MICROS      2450
 
-#define SIG_PIN         14
+#define SIG_PIN         15
 #define BUZZER_PIN      16
 
 int Sound = 900;
