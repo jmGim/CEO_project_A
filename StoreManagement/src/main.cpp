@@ -214,53 +214,34 @@ void setup() {
     display.init();
     display.flipScreenVertically();
     display.setFont(ArialMT_Plain_10);
-    display.drawString(20, 0, "Wind :");
-    display.drawString(20, 11, "Today : ");
-    display.drawString(20, 22, "Tomorrow : ");
+    display.drawString(20, 0, "Wind:     2.08");
+    display.drawString(20, 11, "Today:    clouds  ");
+    display.drawString(20, 22, "Tomorrow: clouds");
     display.display();
 
-    initDevice();
-    // If not configured it'll be configured and rebooted in the initDevice(),
-    // If configured, initDevice will set the proper setting to cfg variable
+    // initDevice();
+    // // If not configured it'll be configured and rebooted in the initDevice(),
+    // // If configured, initDevice will set the proper setting to cfg variable
 
-    WiFi.mode(WIFI_STA);
-    WiFi.begin((const char*)cfg["ssid"], (const char*)cfg["w_pw"]);
-    while (WiFi.status() != WL_CONNECTED) {
-        delay(500);
-        Serial.print(".");
-    }
-    // main setup
-    Serial.printf("\nIP address : "); Serial.println(WiFi.localIP());
-    JsonObject meta = cfg["meta"];
-    pubInterval = meta.containsKey("pubInterval") ? atoi((const char*)meta["pubInterval"]) : 0;
-    lastPublishMillis = - pubInterval;
+    // WiFi.mode(WIFI_STA);
+    // WiFi.begin((const char*)cfg["ssid"], (const char*)cfg["w_pw"]);
+    // while (WiFi.status() != WL_CONNECTED) {
+    //     delay(500);
+    //     Serial.print(".");
+    // }
+    // // main setup
+    // Serial.printf("\nIP address : "); Serial.println(WiFi.localIP());
+    // JsonObject meta = cfg["meta"];
+    // pubInterval = meta.containsKey("pubInterval") ? atoi((const char*)meta["pubInterval"]) : 0;
+    // lastPublishMillis = - pubInterval;
     
-    set_iot_server();
-    client.setCallback(message);
-    iot_connect();
+    // set_iot_server();
+    // client.setCallback(message);
+    // iot_connect();
 }
 
 void loop() {
 
-     // int position;
-  // 
-  // if (servoIndex != -1){
-  //   for (position = 0; position <= 180; position++){
-  //     ISR_Servo.setPosition(servoIndex, position);
-  //     delay(100);
-  //   }
-  // }
-  // delay(1000);
-
-
-  // if (servoIndex != -1){
-  //   for (position = 180; position >= 0; position--){
-  //     ISR_Servo.setPosition(servoIndex, position);
-  //     delay(100);
-  //   }
-  // }
-  // delay(1000);
-  
   Serial.print("----- State -----\nDoor : ");
   Serial.print(Door_State ? "OPEN" : "CLOSE");
   Serial.print(", Store : ");
@@ -336,12 +317,12 @@ void loop() {
     }
   }
 
-  if (!client.connected()) {
-      iot_connect();
-  }
-  client.loop();
-  if ((pubInterval != 0) && (millis() - lastPublishMillis > pubInterval)) {
-      publishData();
-      lastPublishMillis = millis();
-  }
+  // if (!client.connected()) {
+  //     iot_connect();
+  // }
+  // client.loop();
+  // if ((pubInterval != 0) && (millis() - lastPublishMillis > pubInterval)) {
+  //     publishData();
+  //     lastPublishMillis = millis();
+  // }
 }
